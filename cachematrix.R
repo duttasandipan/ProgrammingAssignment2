@@ -1,10 +1,3 @@
-"This is the main block for the code and makes appropriate function calls"
-
-a <- matrix(rnorm(9),nrow=3) # Please choose any random invertible matrix as you wish!!
-my_matrix <- makeCacheMatrix(a)
-my_matrix$setinverse(cacheSolve(my_matrix))
-cacheSolve(my_matrix)
-
 "This function initializes a new matrix with 4 associated functions:
 1. set - Re-initializes the matrix to a new one and erases the cached inverse matrix
 2. get - Fetches the matrix (if initialized already)
@@ -45,3 +38,10 @@ cacheSolve <- function(x, ...){
   x$setinverse(inv)
   inv
 }
+
+"This is the main block for the code and makes appropriate function calls"
+
+a <- matrix(rnorm(9),nrow=3) # Please choose any random invertible matrix as you wish!!
+my_matrix <- makeCacheMatrix(a)
+cacheSolve(my_matrix) # First call calculates the inverse
+cacheSolve(my_matrix) # Second call returns the cached inverse
